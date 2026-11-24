@@ -1,1 +1,272 @@
-*{box-sizing:border-box}body{margin:0;background:#edf2f6;color:#192c40;font:16px system-ui,sans-serif}main{max-width:1100px;margin:40px auto;padding:0 22px}header{background:#102d43;color:white;padding:30px;border-radius:16px;margin-bottom:24px}header small{letter-spacing:.15em;color:#8ee2dc}h1{font-size:36px;margin:12px 0}p{line-height:1.5}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}label{font-weight:bold}select,button{font:inherit;padding:12px;border:1px solid #becbd5;border-radius:8px}select{background:white;min-width:210px}button{background:#086d70;color:white;cursor:pointer;border:0}.tablewrap{overflow:auto;background:white;border-radius:12px}table{border-collapse:collapse;width:100%;white-space:nowrap}th,td{padding:16px;text-align:left;border-bottom:1px solid #e0e7ed}th{background:#dbe6ed;font-size:14px}td:first-child{font-weight:bold}.late,.cancelled{color:#b42318;font-weight:bold}.ok{color:#08734d}footer{font-size:13px;color:#506579;margin-top:24px;line-height:1.8}td small{display:block;color:#536879}a{color:#086d70}
+
+/* ==============================
+   CSS-muuttujat
+   ============================== */
+
+:root {
+    --color-background: #edf2f6;
+    --color-surface: #ffffff;
+    --color-text: #192c40;
+    --color-primary: #102d43;
+    --color-secondary: #086d70;
+    --color-secondary-hover: #065759;
+    --color-accent: #8ee2dc;
+
+    --color-error: #b42318;
+    --color-success: #08734d;
+    --color-muted: #536879;
+    --color-footer: #506579;
+
+    --color-border: #becbd5;
+    --color-table-border: #e0e7ed;
+    --color-table-header: #dbe6ed;
+
+    --font-family: system-ui, sans-serif;
+    --font-size: 1rem;
+
+    --radius-small: 8px;
+    --radius-medium: 12px;
+    --radius-large: 16px;
+
+    --content-width: 1100px;
+}
+
+/* ==============================
+   Perustyylit
+   ============================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+}
+
+main {
+    max-width: var(--content-width);
+    margin: 40px auto;
+    padding: 0 22px;
+}
+
+h1 {
+    font-size: 2.25rem;
+    margin: 12px 0;
+}
+
+p {
+    line-height: 1.5;
+}
+
+a {
+    color: var(--color-secondary);
+}
+
+a:hover {
+    color: var(--color-secondary-hover);
+}
+
+/* ==============================
+   Otsake
+   ============================== */
+
+header {
+    background: var(--color-primary);
+    color: var(--color-surface);
+    padding: 30px;
+    border-radius: var(--radius-large);
+    margin-bottom: 24px;
+}
+
+header small {
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+}
+
+header a {
+    color: var(--color-accent);
+}
+
+header a:hover {
+    color: var(--color-surface);
+}
+
+/* ==============================
+   Lomake-elementit
+   ============================== */
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+label {
+    font-weight: bold;
+}
+
+select,
+button {
+    font: inherit;
+    padding: 12px;
+    min-height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+}
+
+select {
+    background: var(--color-surface);
+    color: var(--color-text);
+    min-width: 210px;
+    max-width: 100%;
+}
+
+button {
+    background: var(--color-secondary);
+    color: var(--color-surface);
+    cursor: pointer;
+    border: 0;
+    transition: background-color 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+    background: var(--color-secondary-hover);
+}
+
+button:disabled,
+select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ==============================
+   Saavutettavuus
+   ============================== */
+
+button:focus-visible,
+select:focus-visible,
+a:focus-visible,
+.tablewrap:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 4px;
+}
+
+header a:focus-visible,
+header button:focus-visible,
+header select:focus-visible {
+    outline-color: var(--color-accent);
+}
+
+/* ==============================
+   Taulukko
+   ============================== */
+
+.tablewrap {
+    overflow: auto;
+    background: var(--color-surface);
+    border-radius: var(--radius-medium);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    white-space: nowrap;
+}
+
+th,
+td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-table-border);
+}
+
+th {
+    background: var(--color-table-header);
+    font-size: 0.875rem;
+}
+
+td:first-child {
+    font-weight: bold;
+}
+
+td small {
+    display: block;
+    color: var(--color-muted);
+}
+
+/* ==============================
+   Tilatiedot
+   ============================== */
+
+.late,
+.cancelled {
+    color: var(--color-error);
+    font-weight: bold;
+}
+
+.ok {
+    color: var(--color-success);
+}
+
+/* ==============================
+   Alatunniste
+   ============================== */
+
+footer {
+    font-size: 0.8125rem;
+    color: var(--color-footer);
+    margin-top: 24px;
+    line-height: 1.8;
+}
+
+/* ==============================
+   Responsiivisuus
+   ============================== */
+
+@media (max-width: 600px) {
+    main {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.625rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    select,
+    button {
+        min-width: 0;
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 12px;
+    }
+}
+
+/* ==============================
+   Vähennetty liike
+   ============================== */
+
+@media (prefers-reduced-motion: reduce) {
+    button {
+        transition: none;
+    }
+}
