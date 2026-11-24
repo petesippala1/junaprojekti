@@ -32,6 +32,39 @@
 }
 
 /* ==============================
+   Tumma teema
+   ============================== */
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-background: #0f172a;
+    --color-surface: #1e293b;
+    --color-text: #e2e8f0;
+    --color-primary: #020617;
+    --color-secondary: #5eead4;
+    --color-secondary-hover: #2dd4bf;
+    --color-accent: #8ee2dc;
+
+    --color-error: #f87171;
+    --color-success: #4ade80;
+    --color-muted: #94a3b8;
+    --color-footer: #94a3b8;
+
+    --color-border: #475569;
+    --color-table-border: #334155;
+    --color-table-header: #334155;
+}
+
+[data-theme="dark"] header {
+    color: var(--color-text);
+}
+
+[data-theme="dark"] button {
+    color: #0f172a;
+}
+
+/* ==============================
    Perustyylit
    ============================== */
 
