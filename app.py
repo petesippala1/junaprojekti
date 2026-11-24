@@ -52,7 +52,7 @@ def trains(code):
         return jsonify(error='Virheellinen asematunnus'), 400
     names = {s['stationShortCode']: s['stationName'] for s in stations()}
     if code not in names:
-        return jsonify(error='Tuntematon asema'), 404
+        return jsonify(error='Tuntematon asema!'), 404
     data = get_data('/live-trains/station/' + code, {
         'arrived_trains': 0, 'arriving_trains': 0, 'departed_trains': 5,
         'departing_trains': 30, 'include_nonstopping': 'false',
@@ -61,7 +61,7 @@ def trains(code):
 
 @app.errorhandler(requests.exceptions.RequestException)
 def api_error(error):
-    return jsonify(error='Digitraffic-yhteys epäonnistui. Yritä uudelleen.'), 502
+    return jsonify(error='Digitraffic-yhteys epäonnistui. Yritä uudelleen!'), 502
 
 if __name__ == '__main__':
     app.run(port=5000)
