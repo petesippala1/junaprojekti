@@ -1,9 +1,11 @@
 
 /* ==============================
-   CSS-muuttujat
+   CSS-muuttujat – vaalea teema
    ============================== */
 
 :root {
+    color-scheme: light;
+
     --color-background: #edf2f6;
     --color-surface: #ffffff;
     --color-text: #192c40;
@@ -11,6 +13,9 @@
     --color-secondary: #086d70;
     --color-secondary-hover: #065759;
     --color-accent: #8ee2dc;
+
+    --color-header-text: #ffffff;
+    --color-button-text: #ffffff;
 
     --color-error: #b42318;
     --color-success: #08734d;
@@ -46,6 +51,9 @@
     --color-secondary-hover: #2dd4bf;
     --color-accent: #8ee2dc;
 
+    --color-header-text: #e2e8f0;
+    --color-button-text: #0f172a;
+
     --color-error: #f87171;
     --color-success: #4ade80;
     --color-muted: #94a3b8;
@@ -54,14 +62,6 @@
     --color-border: #475569;
     --color-table-border: #334155;
     --color-table-header: #334155;
-}
-
-[data-theme="dark"] header {
-    color: var(--color-text);
-}
-
-[data-theme="dark"] button {
-    color: #0f172a;
 }
 
 /* ==============================
@@ -111,10 +111,18 @@ a:hover {
 
 header {
     background: var(--color-primary);
-    color: var(--color-surface);
+    color: var(--color-header-text);
     padding: 30px;
     border-radius: var(--radius-large);
     margin-bottom: 24px;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 header small {
@@ -127,7 +135,7 @@ header a {
 }
 
 header a:hover {
-    color: var(--color-surface);
+    color: var(--color-header-text);
 }
 
 /* ==============================
@@ -163,10 +171,12 @@ select {
 
 button {
     background: var(--color-secondary);
-    color: var(--color-surface);
+    color: var(--color-button-text);
     cursor: pointer;
     border: 0;
-    transition: background-color 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
 button:hover:not(:disabled) {
@@ -177,6 +187,32 @@ button:disabled,
 select:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+/* ==============================
+   Teemanvaihtopainike
+   ============================== */
+
+#theme-toggle {
+    background: transparent;
+    color: var(--color-header-text);
+    border: 1px solid var(--color-accent);
+    margin-left: auto;
+    width: auto;
+}
+
+#theme-toggle:hover:not(:disabled) {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+#theme-toggle[aria-pressed="true"] {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+#theme-toggle[aria-pressed="true"]:hover:not(:disabled) {
+    background: var(--color-secondary-hover);
 }
 
 /* ==============================
@@ -193,7 +229,8 @@ a:focus-visible,
 
 header a:focus-visible,
 header button:focus-visible,
-header select:focus-visible {
+header select:focus-visible,
+#theme-toggle:focus-visible {
     outline-color: var(--color-accent);
 }
 
@@ -277,13 +314,17 @@ footer {
         font-size: 1.625rem;
     }
 
+    .header-top {
+        gap: 12px;
+    }
+
     .controls {
         flex-direction: column;
         align-items: stretch;
     }
 
-    select,
-    button {
+    .controls select,
+    .controls button {
         min-width: 0;
         width: 100%;
     }
